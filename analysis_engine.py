@@ -10,77 +10,133 @@ from sklearn.metrics.pairwise import cosine_similarity
 # Load environment variables from .env file
 load_dotenv()
 
-class AzureOpenAIClient:
-    """Azure OpenAI client to replace standard OpenAI client"""
+class AzureOpenAIAuth:
+    """Handle OAuth2 authentication with PingFed"""
     
     def __init__(self):
-        self.api_key = os.getenv("AZURE_OPENAI_API_KEY")
-        self.endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
-        self.api_version = os.getenv("AZURE_OPENAI_API_VERSION", "2024-02-15-preview")
+        self.ping_fed_url = os.getenv('PING_FED_URL')
+        self.kgw_client_id = os.getenv('KGW_CLIENT_ID')
+        self.kgw_client_secret = os.getenv('KGW_CLIENT_SECRET')
+        self.access_token = None
+        self.token_expires_at = None
         
-        if not self.api_key or not self.endpoint:
-            raise ValueError("Azure OpenAI credentials not found. Please set AZURE_OPENAI_API_KEY and AZURE_OPENAI_ENDPOINT in .env file")
+        if not all([self.ping_fed_url, self.kgw_client_id, self.kgw_client_secret]):
+            raise ValueError("Missing auth config: PING_FED_URL, KGW_CLIENT_ID, KGW_CLIENT_SECRET")
     
-    def chat_completions_create(self, model="gpt-4o", messages=None, temperature=0.3, max_tokens=4000):
-        """Create chat completion using Azure OpenAI"""
+    def get_access_token(self) -> str:
+        """Get or refresh OAuth2 access token"""
+        # Return cached token if still valid
+        if self.access_token and self.token_expires_at and time.time() < self.token_expires_at:
+            return self.access_token
         
-        # Map model names to deployment names if needed
-        deployment_name = model  # Assuming deployment name matches model name
-        
-        url = f"{self.endpoint}/openai/deployments/{deployment_name}/chat/completions?api-version={self.api_version}"
-        
-        headers = {
-            'Content-Type': 'application/json',
-            'api-key': self.api_key
+        # Request new token from PingFed
+        headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+        data = {
+            'grant_type': 'client_credentials',
+            'client_id': self.kgw_client_id,
+            'client_secret': self.kgw_client_secret
         }
         
+        response = requests.post(self.ping_fed_url, headers=headers, data=data, timeout=30)
+        
+        if response.status_code == 200:
+            token_data = response.json()
+            self.access_token = token_data['access_token']
+            # Cache with 5-minute buffer
+            self.token_expires_at = time.time() + token_data.get('expires_in', 3600) - 300
+            return self.access_token
+        else:
+            raise Exception(f"Auth failed: {response.status_code} - {response.text}")
+
+class AzureOpenAIClient:
+    """Azure OpenAI client matching azure.py implementation"""
+    
+    def __init__(self):
+        self.auth = AzureOpenAIAuth()
+        self.endpoint = os.getenv('KGW_ENDPOINT')
+        self.api_version = os.getenv('AOAI_API_VERSION')
+        self.chat_deployment = os.getenv('CHAT_MODEL_DEPLOYMENT_NAME')
+        
+        if not all([self.endpoint, self.api_version, self.chat_deployment]):
+            raise ValueError("Missing config: KGW_ENDPOINT, AOAI_API_VERSION, CHAT_MODEL_DEPLOYMENT_NAME")
+        
+        self.current_deployment = self.chat_deployment
+        print(f"✅ Using GPT-4o deployment: {self.current_deployment}")
+    
+    def make_api_call(self, messages, max_tokens=4000, temperature=0.3):
+        """Core API call method matching azure.py"""
+        # Step 1: Get OAuth2 access token
+        access_token = self.auth.get_access_token()
+        
+        # Step 2: Build Azure OpenAI endpoint URL
+        url = f"{self.endpoint}/openai/deployments/{self.current_deployment}/chat/completions?api-version={self.api_version}"
+        
+        # Step 3: Prepare headers with Bearer token
+        headers = {
+            'Content-Type': 'application/json',
+            'Authorization': f'Bearer {access_token}'
+        }
+        
+        # Step 4: Prepare OpenAI Chat Completions payload
         payload = {
-            'messages': messages or [],
-            'max_tokens': max_tokens,
+            'messages': messages,
+            'max_completion_tokens': max_tokens,  # For newer models
             'temperature': temperature
         }
         
-        # Retry logic with exponential backoff
+        # Step 5: Make HTTP POST request with retry logic
         max_retries = 3
         for attempt in range(max_retries):
             try:
                 response = requests.post(url, headers=headers, json=payload, timeout=120)
                 
                 if response.status_code == 200:
+                    # Success - extract response content
                     result = response.json()
                     return MockResponse(result['choices'][0]['message']['content'])
+                    
                 elif response.status_code == 429:
+                    # Rate limit - exponential backoff
                     wait_time = (2 ** attempt) + 3
-                    print(f"Rate limit hit, waiting {wait_time} seconds...")
+                    print(f"Rate limit hit, waiting {wait_time}s...")
                     time.sleep(wait_time)
                     continue
+                    
                 else:
+                    # API error
                     error_msg = f"API Error: {response.status_code} - {response.text}"
-                    print(f"Azure OpenAI API Error - {error_msg}")
-                    return MockResponse(f"Error: {error_msg}")
+                    print(f"ERROR: {error_msg}")
+                    return MockResponse(error_msg)
                     
             except Exception as e:
                 if attempt == max_retries - 1:
                     error_msg = f"Request failed after {max_retries} attempts: {str(e)}"
-                    print(f"Azure OpenAI Request Error - {error_msg}")
-                    return MockResponse(f"Error: {error_msg}")
+                    print(f"ERROR: {error_msg}")
+                    return MockResponse(error_msg)
+                    
+                # Wait before retry
                 wait_time = (2 ** attempt) + 2
-                print(f"Request error, retrying in {wait_time} seconds...")
+                print(f"Request error, retrying in {wait_time}s...")
                 time.sleep(wait_time)
         
-        return MockResponse(f"Failed to get response after {max_retries} attempts")
+        return MockResponse(f"Failed after {max_retries} attempts")
+    
+    def chat_completions_create(self, model="gpt-4o", messages=None, temperature=0.3, max_tokens=4000):
+        """Create chat completion using Azure OpenAI"""
+        return self.make_api_call(messages or [], max_tokens, temperature)
     
     def embeddings_create(self, model="text-embedding-ada-002", input_text=None):
         """Create embeddings using Azure OpenAI"""
+        # For embeddings, we'll use the same auth pattern but different endpoint
+        access_token = self.auth.get_access_token()
         
-        # Map embedding model name to deployment name if needed
+        # Assume embeddings deployment name matches model name
         deployment_name = model
-        
         url = f"{self.endpoint}/openai/deployments/{deployment_name}/embeddings?api-version={self.api_version}"
         
         headers = {
             'Content-Type': 'application/json',
-            'api-key': self.api_key
+            'Authorization': f'Bearer {access_token}'
         }
         
         payload = {
@@ -515,18 +571,33 @@ def check_requirements():
         print("Please create a .env file with Azure OpenAI credentials")
         return False
     
-    # Check for Azure OpenAI credentials
-    api_key = os.getenv("AZURE_OPENAI_API_KEY")
-    endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
+    # Check for Azure OpenAI credentials (matching azure.py)
+    ping_fed_url = os.getenv("PING_FED_URL")
+    kgw_client_id = os.getenv("KGW_CLIENT_ID")
+    kgw_client_secret = os.getenv("KGW_CLIENT_SECRET")
+    kgw_endpoint = os.getenv("KGW_ENDPOINT")
+    aoai_api_version = os.getenv("AOAI_API_VERSION")
+    chat_deployment = os.getenv("CHAT_MODEL_DEPLOYMENT_NAME")
     
-    if not api_key:
-        print("ERROR AZURE_OPENAI_API_KEY not found in .env file!")
-        print("Please add AZURE_OPENAI_API_KEY=your_azure_api_key_here to your .env file")
-        return False
+    missing_vars = []
+    if not ping_fed_url:
+        missing_vars.append("PING_FED_URL")
+    if not kgw_client_id:
+        missing_vars.append("KGW_CLIENT_ID")
+    if not kgw_client_secret:
+        missing_vars.append("KGW_CLIENT_SECRET")
+    if not kgw_endpoint:
+        missing_vars.append("KGW_ENDPOINT")
+    if not aoai_api_version:
+        missing_vars.append("AOAI_API_VERSION")
+    if not chat_deployment:
+        missing_vars.append("CHAT_MODEL_DEPLOYMENT_NAME")
     
-    if not endpoint:
-        print("ERROR AZURE_OPENAI_ENDPOINT not found in .env file!")
-        print("Please add AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/ to your .env file")
+    if missing_vars:
+        print(f"ERROR Missing environment variables: {', '.join(missing_vars)}")
+        print("Please add these to your .env file:")
+        for var in missing_vars:
+            print(f"  {var}=your_value_here")
         return False
     
     # Check for required packages

@@ -49,9 +49,19 @@ pip install -r requirements.txt
 ### 2. Configure Azure OpenAI
 Create a `.env` file in the project root:
 ```
-AZURE_OPENAI_API_KEY=your_azure_api_key_here
-AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
-AZURE_OPENAI_API_VERSION=2024-02-15-preview
+# Authentication Variables (Required)
+PING_FED_URL=your_ping_federation_oauth_endpoint
+KGW_CLIENT_ID=your_client_id
+KGW_CLIENT_SECRET=your_client_secret
+
+# Azure OpenAI Configuration (Required)
+KGW_ENDPOINT=your_azure_openai_endpoint
+AOAI_API_VERSION=your_api_version
+CHAT_MODEL_DEPLOYMENT_NAME=your_gpt4o_deployment_name
+
+# Optional Variables (for O3-mini support)
+GPT_O3_MINI_DEPLOYMENT_NAME=your_o3_mini_deployment_name
+USE_O3_MINI=false
 ```
 
 ### 3. Start the Application
@@ -141,10 +151,11 @@ LangGraph/
 ## Troubleshooting
 
 ### Common Issues
-1. **Azure API Key Error**: Ensure `.env` file exists with valid Azure OpenAI credentials
+1. **Azure OAuth2 Error**: Ensure `.env` file exists with valid PingFed OAuth2 credentials
 2. **Import Errors**: Run `pip install -r requirements.txt`
 3. **Port Already in Use**: Change port in `app.py` or kill existing process
 4. **File Upload Issues**: Check file permissions and disk space
+5. **Authentication Failures**: Check PING_FED_URL, KGW_CLIENT_ID, and KGW_CLIENT_SECRET values
 
 ### Testing
 The project includes Playwright end-to-end tests:
