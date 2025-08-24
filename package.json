@@ -1,0 +1,27 @@
+{
+  "name": "ai-document-analysis-system",
+  "version": "1.0.0",
+  "description": "AI Document Analysis System with Dynamic Element Versioning",
+  "main": "app.py",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report",
+    "install-browsers": "playwright install"
+  },
+  "keywords": [
+    "ai",
+    "document-analysis",
+    "fastapi",
+    "playwright",
+    "testing"
+  ],
+  "author": "AI Document Analysis Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  },
+  "dependencies": {}
+}

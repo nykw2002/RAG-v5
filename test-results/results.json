@@ -1,0 +1,777 @@
+{
+  "config": {
+    "configFile": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\playwright.config.js",
+    "rootDir": "C:/Users/nicul/OneDrive/Desktop/LangGraph/tests/e2e",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\tests\\global-setup.js",
+    "globalTeardown": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\tests\\global-teardown.js",
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "playwright-report"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results/results.json"
+        }
+      ],
+      [
+        "junit",
+        {
+          "outputFile": "test-results/junit.xml"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "C:/Users/nicul/OneDrive/Desktop/LangGraph/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "C:/Users/nicul/OneDrive/Desktop/LangGraph/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/nicul/OneDrive/Desktop/LangGraph/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "firefox",
+        "name": "firefox",
+        "testDir": "C:/Users/nicul/OneDrive/Desktop/LangGraph/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/nicul/OneDrive/Desktop/LangGraph/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "webkit",
+        "name": "webkit",
+        "testDir": "C:/Users/nicul/OneDrive/Desktop/LangGraph/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/nicul/OneDrive/Desktop/LangGraph/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "Mobile Chrome",
+        "name": "Mobile Chrome",
+        "testDir": "C:/Users/nicul/OneDrive/Desktop/LangGraph/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/Users/nicul/OneDrive/Desktop/LangGraph/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "Mobile Safari",
+        "name": "Mobile Safari",
+        "testDir": "C:/Users/nicul/OneDrive/Desktop/LangGraph/tests/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.55.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "09-israel-prompt-test.spec.js",
+      "file": "09-israel-prompt-test.spec.js",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Israel Complaints Extraction Test",
+          "file": "09-israel-prompt-test.spec.js",
+          "line": 4,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should process Israel complaints request successfully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 15205,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('#version-indicator')\nExpected: visible\nReceived: hidden\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#version-indicator')\u001b[22m\n\u001b[2m    14 × locator resolved to <div id=\"version-indicator\" class=\"version-indicator\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('#version-indicator')\nExpected: visible\nReceived: hidden\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#version-indicator')\u001b[22m\n\u001b[2m    14 × locator resolved to <div id=\"version-indicator\" class=\"version-indicator\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n\n    at C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\tests\\e2e\\09-israel-prompt-test.spec.js:46:54",
+                        "location": {
+                          "file": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\tests\\e2e\\09-israel-prompt-test.spec.js",
+                          "column": 54,
+                          "line": 46
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 44 |\u001b[39m     \n \u001b[90m 45 |\u001b[39m     \u001b[90m// Version controls should be visible\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 46 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'#version-indicator'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 47 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'#version-text'\u001b[39m))\u001b[33m.\u001b[39mtoContainText(\u001b[32m'Version 1'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 48 |\u001b[39m     \n \u001b[90m 49 |\u001b[39m     \u001b[90m// Test version locking\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\tests\\e2e\\09-israel-prompt-test.spec.js",
+                            "column": 54,
+                            "line": 46
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('#version-indicator')\nExpected: visible\nReceived: hidden\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#version-indicator')\u001b[22m\n\u001b[2m    14 × locator resolved to <div id=\"version-indicator\" class=\"version-indicator\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n\n\n  44 |     \n  45 |     // Version controls should be visible\n> 46 |     await expect(page.locator('#version-indicator')).toBeVisible();\n     |                                                      ^\n  47 |     await expect(page.locator('#version-text')).toContainText('Version 1');\n  48 |     \n  49 |     // Test version locking\n    at C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\tests\\e2e\\09-israel-prompt-test.spec.js:46:54"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "Waiting for AI to process Israel complaints...\n"
+                        },
+                        {
+                          "text": "=== AI RESULT ===\n"
+                        },
+                        {
+                          "text": "\n                Number of complaints for Israel: 14\nList of complaints:\n- 000201357115 Israel PT3Y 10000000097173 Pump does not work\n- 000201362808 Israel PT3Y 10000000097173 Device will not spray\n- 000201368601 Israel PT3Y 10000000097173 Device will not spray\n- 000201390276 Israel 9V2R 10000000097173 Spray does not work\n- 000201396289 Israel PT3Y 10000000097173 Pump does not work\n- 000201399710 Israel UC9T 10000000097173 Pump does not work\n- 000201412764 Israel PT3Y 10000000097173 The substance does not come out.\n- 000201431674 Israel 6J7F 10000000097173 Will not spray\n- 000201446598 Israel UC9T 10000000097173 The substance does not come out\n- QE-004535 Israel 7R8M 10000000097173 Avamys nasal spray 120 dose- BN\n- QE-006727 Israel EN8T 10000000097173 AVAMYS AQ NASAL SPRAY 120D -\n- QE-008974 Israel 7R8M 10000000097173 Avamys nasal spray 120 dose- BN\n- QE-009576 Israel 9D6N 10000000097173 Avamys nasal spray 120 dose- BN\n- QE-009755 Israel 7R8M 10000000097173 Avamys nasal spray 120 dose- BN\n\n            \n"
+                        },
+                        {
+                          "text": "=== END RESULT ===\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T21:34:38.729Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\test-results\\09-israel-prompt-test-Isra-43faf-laints-request-successfully-chromium\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\test-results\\09-israel-prompt-test-Isra-43faf-laints-request-successfully-chromium\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\test-results\\09-israel-prompt-test-Isra-43faf-laints-request-successfully-chromium\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\tests\\e2e\\09-israel-prompt-test.spec.js",
+                        "column": 54,
+                        "line": 46
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "3c1d4f447525d1ff85fa-1b1842bb0b590d84af6b",
+              "file": "09-israel-prompt-test.spec.js",
+              "line": 7,
+              "column": 3
+            },
+            {
+              "title": "should handle chat iteration with realistic context",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 35575,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Initial result length: \u001b[33m1045\u001b[39m\n"
+                        },
+                        {
+                          "text": "Final result length: \u001b[33m81\u001b[39m\n"
+                        },
+                        {
+                          "text": "Version after chat: Version 1\n"
+                        },
+                        {
+                          "text": "✅ Result was updated (same version)\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T21:34:54.688Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3c1d4f447525d1ff85fa-6e03f0ac38fbd4983ca1",
+              "file": "09-israel-prompt-test.spec.js",
+              "line": 63,
+              "column": 3
+            },
+            {
+              "title": "should process Israel complaints request successfully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 15792,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('#version-indicator')\nExpected: visible\nReceived: hidden\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#version-indicator')\u001b[22m\n\u001b[2m    14 × locator resolved to <div id=\"version-indicator\" class=\"version-indicator\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('#version-indicator')\nExpected: visible\nReceived: hidden\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#version-indicator')\u001b[22m\n\u001b[2m    14 × locator resolved to <div id=\"version-indicator\" class=\"version-indicator\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n\n    at C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\tests\\e2e\\09-israel-prompt-test.spec.js:46:54",
+                        "location": {
+                          "file": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\tests\\e2e\\09-israel-prompt-test.spec.js",
+                          "column": 54,
+                          "line": 46
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 44 |\u001b[39m     \n \u001b[90m 45 |\u001b[39m     \u001b[90m// Version controls should be visible\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 46 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'#version-indicator'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 47 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'#version-text'\u001b[39m))\u001b[33m.\u001b[39mtoContainText(\u001b[32m'Version 1'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 48 |\u001b[39m     \n \u001b[90m 49 |\u001b[39m     \u001b[90m// Test version locking\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\tests\\e2e\\09-israel-prompt-test.spec.js",
+                            "column": 54,
+                            "line": 46
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('#version-indicator')\nExpected: visible\nReceived: hidden\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#version-indicator')\u001b[22m\n\u001b[2m    14 × locator resolved to <div id=\"version-indicator\" class=\"version-indicator\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n\n\n  44 |     \n  45 |     // Version controls should be visible\n> 46 |     await expect(page.locator('#version-indicator')).toBeVisible();\n     |                                                      ^\n  47 |     await expect(page.locator('#version-text')).toContainText('Version 1');\n  48 |     \n  49 |     // Test version locking\n    at C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\tests\\e2e\\09-israel-prompt-test.spec.js:46:54"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "Waiting for AI to process Israel complaints...\n"
+                        },
+                        {
+                          "text": "=== AI RESULT ===\n"
+                        },
+                        {
+                          "text": "\n                Total number of complaints for Israel: 14\nDetailed list of complaints:\n- 000201357115 Israel PT3Y 10000000097173 Pump does not work\n- 000201362808 Israel PT3Y 10000000097173 Device will not spray\n- 000201368601 Israel PT3Y 10000000097173 Device will not spray\n- 000201390276 Israel 9V2R 10000000097173 Spray does not work\n- 000201396289 Israel PT3Y 10000000097173 Pump does not work\n- 000201399710 Israel UC9T 10000000097173 Pump does not work\n- 000201412764 Israel PT3Y 10000000097173 The substance does not come out.\n- 000201431674 Israel 6J7F 10000000097173 Will not spray\n- 000201446598 Israel UC9T 10000000097173 The substance does not come out\n- QE-004535 Israel 7R8M 10000000097173 Avamys nasal spray 120 dose- BN\n- QE-006727 Israel EN8T 10000000097173 AVAMYS AQ NASAL SPRAY 120D -\n- QE-008974 Israel 7R8M 10000000097173 Avamys nasal spray 120 dose- BN\n- QE-009576 Israel 9D6N 10000000097173 Avamys nasal spray 120 dose- BN\n- QE-009755 Israel 7R8M 10000000097173 Avamys nasal spray 120 dose- BN\n\n            \n"
+                        },
+                        {
+                          "text": "=== END RESULT ===\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T21:35:31.000Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\test-results\\09-israel-prompt-test-Isra-43faf-laints-request-successfully-firefox\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\test-results\\09-israel-prompt-test-Isra-43faf-laints-request-successfully-firefox\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\test-results\\09-israel-prompt-test-Isra-43faf-laints-request-successfully-firefox\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\tests\\e2e\\09-israel-prompt-test.spec.js",
+                        "column": 54,
+                        "line": 46
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "3c1d4f447525d1ff85fa-4af201d4cf50ff3588ed",
+              "file": "09-israel-prompt-test.spec.js",
+              "line": 7,
+              "column": 3
+            },
+            {
+              "title": "should handle chat iteration with realistic context",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 35959,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Initial result length: \u001b[33m1022\u001b[39m\n"
+                        },
+                        {
+                          "text": "Final result length: \u001b[33m81\u001b[39m\n"
+                        },
+                        {
+                          "text": "Version after chat: Version 1\n"
+                        },
+                        {
+                          "text": "✅ Result was updated (same version)\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T21:35:48.112Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3c1d4f447525d1ff85fa-73ab30d7713f014cec51",
+              "file": "09-israel-prompt-test.spec.js",
+              "line": 63,
+              "column": 3
+            },
+            {
+              "title": "should process Israel complaints request successfully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 16640,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('#version-indicator')\nExpected: visible\nReceived: hidden\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#version-indicator')\u001b[22m\n\u001b[2m    14 × locator resolved to <div id=\"version-indicator\" class=\"version-indicator\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('#version-indicator')\nExpected: visible\nReceived: hidden\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#version-indicator')\u001b[22m\n\u001b[2m    14 × locator resolved to <div id=\"version-indicator\" class=\"version-indicator\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n\n    at C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\tests\\e2e\\09-israel-prompt-test.spec.js:46:54",
+                        "location": {
+                          "file": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\tests\\e2e\\09-israel-prompt-test.spec.js",
+                          "column": 54,
+                          "line": 46
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 44 |\u001b[39m     \n \u001b[90m 45 |\u001b[39m     \u001b[90m// Version controls should be visible\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 46 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'#version-indicator'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 47 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'#version-text'\u001b[39m))\u001b[33m.\u001b[39mtoContainText(\u001b[32m'Version 1'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 48 |\u001b[39m     \n \u001b[90m 49 |\u001b[39m     \u001b[90m// Test version locking\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\tests\\e2e\\09-israel-prompt-test.spec.js",
+                            "column": 54,
+                            "line": 46
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m failed\n\nLocator:  locator('#version-indicator')\nExpected: visible\nReceived: hidden\nTimeout:  10000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 10000ms\u001b[22m\n\u001b[2m  - waiting for locator('#version-indicator')\u001b[22m\n\u001b[2m    14 × locator resolved to <div id=\"version-indicator\" class=\"version-indicator\">…</div>\u001b[22m\n\u001b[2m       - unexpected value \"hidden\"\u001b[22m\n\n\n  44 |     \n  45 |     // Version controls should be visible\n> 46 |     await expect(page.locator('#version-indicator')).toBeVisible();\n     |                                                      ^\n  47 |     await expect(page.locator('#version-text')).toContainText('Version 1');\n  48 |     \n  49 |     // Test version locking\n    at C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\tests\\e2e\\09-israel-prompt-test.spec.js:46:54"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "Waiting for AI to process Israel complaints...\n"
+                        },
+                        {
+                          "text": "=== AI RESULT ===\n"
+                        },
+                        {
+                          "text": "\n                Total number of complaints for Israel: 14\nDetailed list of complaints:\n- 000201357115 Israel PT3Y 10000000097173 Pump does not work\n- 000201362808 Israel PT3Y 10000000097173 Device will not spray\n- 000201368601 Israel PT3Y 10000000097173 Device will not spray\n- 000201390276 Israel 9V2R 10000000097173 Spray does not work\n- 000201396289 Israel PT3Y 10000000097173 Pump does not work\n- 000201399710 Israel UC9T 10000000097173 Pump does not work\n- 000201412764 Israel PT3Y 10000000097173 The substance does not come out.\n- 000201431674 Israel 6J7F 10000000097173 Will not spray\n- 000201446598 Israel UC9T 10000000097173 The substance does not come out\n- QE-004535 Israel 7R8M 10000000097173 Avamys nasal spray 120 dose- BN\n- QE-006727 Israel EN8T 10000000097173 AVAMYS AQ NASAL SPRAY 120D -\n- QE-008974 Israel 7R8M 10000000097173 Avamys nasal spray 120 dose- BN\n- QE-009576 Israel 9D6N 10000000097173 Avamys nasal spray 120 dose- BN\n- QE-009755 Israel 7R8M 10000000097173 Avamys nasal spray 120 dose- BN\n\n            \n"
+                        },
+                        {
+                          "text": "=== END RESULT ===\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T21:36:25.383Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\test-results\\09-israel-prompt-test-Isra-43faf-laints-request-successfully-webkit\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\test-results\\09-israel-prompt-test-Isra-43faf-laints-request-successfully-webkit\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\test-results\\09-israel-prompt-test-Isra-43faf-laints-request-successfully-webkit\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\tests\\e2e\\09-israel-prompt-test.spec.js",
+                        "column": 54,
+                        "line": 46
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "3c1d4f447525d1ff85fa-71df8c08c5dfd8ff9f5a",
+              "file": "09-israel-prompt-test.spec.js",
+              "line": 7,
+              "column": 3
+            },
+            {
+              "title": "should handle chat iteration with realistic context",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 36129,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Initial result length: \u001b[33m1026\u001b[39m\n"
+                        },
+                        {
+                          "text": "Final result length: \u001b[33m76\u001b[39m\n"
+                        },
+                        {
+                          "text": "Version after chat: Version 1\n"
+                        },
+                        {
+                          "text": "✅ Result was updated (same version)\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T21:36:42.590Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3c1d4f447525d1ff85fa-a29328376286369d88a5",
+              "file": "09-israel-prompt-test.spec.js",
+              "line": 63,
+              "column": 3
+            },
+            {
+              "title": "should process Israel complaints request successfully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 90000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 6,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 5226,
+                      "error": {
+                        "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"israel\"\u001b[39m\nReceived string:    \u001b[31m\"\u001b[39m\n\u001b[31m                analysis completed after maximum iterations\u001b[39m\n\u001b[31m            \"\u001b[39m",
+                        "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"israel\"\u001b[39m\nReceived string:    \u001b[31m\"\u001b[39m\n\u001b[31m                analysis completed after maximum iterations\u001b[39m\n\u001b[31m            \"\u001b[39m\n    at C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\tests\\e2e\\09-israel-prompt-test.spec.js:43:38",
+                        "location": {
+                          "file": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\tests\\e2e\\09-israel-prompt-test.spec.js",
+                          "column": 38,
+                          "line": 43
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 41 |\u001b[39m     \n \u001b[90m 42 |\u001b[39m     \u001b[90m// Should mention Israel (case insensitive)\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 43 |\u001b[39m     expect(resultText\u001b[33m.\u001b[39mtoLowerCase())\u001b[33m.\u001b[39mtoContain(\u001b[32m'israel'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 44 |\u001b[39m     \n \u001b[90m 45 |\u001b[39m     \u001b[90m// Version controls should be visible\u001b[39m\n \u001b[90m 46 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'#version-indicator'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\tests\\e2e\\09-israel-prompt-test.spec.js",
+                            "column": 38,
+                            "line": 43
+                          },
+                          "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected substring: \u001b[32m\"israel\"\u001b[39m\nReceived string:    \u001b[31m\"\u001b[39m\n\u001b[31m                analysis completed after maximum iterations\u001b[39m\n\u001b[31m            \"\u001b[39m\n\n  41 |     \n  42 |     // Should mention Israel (case insensitive)\n> 43 |     expect(resultText.toLowerCase()).toContain('israel');\n     |                                      ^\n  44 |     \n  45 |     // Version controls should be visible\n  46 |     await expect(page.locator('#version-indicator')).toBeVisible();\n    at C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\tests\\e2e\\09-israel-prompt-test.spec.js:43:38"
+                        }
+                      ],
+                      "stdout": [
+                        {
+                          "text": "Waiting for AI to process Israel complaints...\n"
+                        },
+                        {
+                          "text": "=== AI RESULT ===\n"
+                        },
+                        {
+                          "text": "\n                Analysis completed after maximum iterations\n            \n"
+                        },
+                        {
+                          "text": "=== END RESULT ===\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T21:37:19.299Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\test-results\\09-israel-prompt-test-Isra-43faf-laints-request-successfully-Mobile-Chrome\\test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\test-results\\09-israel-prompt-test-Isra-43faf-laints-request-successfully-Mobile-Chrome\\video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\test-results\\09-israel-prompt-test-Isra-43faf-laints-request-successfully-Mobile-Chrome\\error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\tests\\e2e\\09-israel-prompt-test.spec.js",
+                        "column": 38,
+                        "line": 43
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "3c1d4f447525d1ff85fa-cb592fcb70f7611c7d5a",
+              "file": "09-israel-prompt-test.spec.js",
+              "line": 7,
+              "column": 3
+            },
+            {
+              "title": "should handle chat iteration with realistic context",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 120000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 7,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 35653,
+                      "errors": [],
+                      "stdout": [
+                        {
+                          "text": "Initial result length: \u001b[33m1043\u001b[39m\n"
+                        },
+                        {
+                          "text": "Final result length: \u001b[33m88\u001b[39m\n"
+                        },
+                        {
+                          "text": "Version after chat: Version 1\n"
+                        },
+                        {
+                          "text": "✅ Result was updated (same version)\n"
+                        }
+                      ],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T21:37:25.293Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "3c1d4f447525d1ff85fa-8d82851dd4a78879532c",
+              "file": "09-israel-prompt-test.spec.js",
+              "line": 63,
+              "column": 3
+            },
+            {
+              "title": "should process Israel complaints request successfully",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "failed",
+                      "duration": 0,
+                      "error": {
+                        "message": "Error: worker process exited unexpectedly (code=3221225794, signal=null)"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: worker process exited unexpectedly (code=3221225794, signal=null)"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T21:38:01.226Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "3c1d4f447525d1ff85fa-a33aae1c8ed63f29e2a7",
+              "file": "09-israel-prompt-test.spec.js",
+              "line": 7,
+              "column": 3
+            },
+            {
+              "title": "should handle chat iteration with realistic context",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 60000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": -1,
+                      "parallelIndex": -1,
+                      "status": "failed",
+                      "duration": 0,
+                      "error": {
+                        "message": "Error: worker process exited unexpectedly (code=3221225794, signal=null)"
+                      },
+                      "errors": [
+                        {
+                          "message": "Error: worker process exited unexpectedly (code=3221225794, signal=null)"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-08-24T21:38:01.227Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "3c1d4f447525d1ff85fa-a484354da6a93e805688",
+              "file": "09-israel-prompt-test.spec.js",
+              "line": 63,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-08-24T21:34:37.651Z",
+    "duration": 203578.291,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 6,
+    "flaky": 0
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "testPrompts": {
+    "extraction": [
+      "How many complaints are for Israel, I need a list with all of them please",
+      "List all CAPA actions mentioned in the document",
+      "Extract all batch numbers from the report"
+    ],
+    "reasoning": [
+      "Analyze overall complaint numbers and compare to previous period",
+      "What are the main quality trends identified in this review?",
+      "Summarize the effectiveness of implemented CAPA actions"
+    ]
+  },
+  "testConfigurations": [
+    {
+      "prompt": "How many complaints are for Israel? Please provide a detailed list with all of them.",
+      "model": "gpt-4o-mini",
+      "method": "extraction",
+      "file_path": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\test.txt"
+    },
+    {
+      "prompt": "Analyze overall complaint numbers and compare to previous period. State the total number of substantiated and unsubstantiated complaints during the review period.",
+      "model": "gpt-4o",
+      "method": "reasoning",
+      "file_path": "C:\\Users\\nicul\\OneDrive\\Desktop\\LangGraph\\test.txt"
+    }
+  ],
+  "mockResponses": {
+    "extractionResult": "Found 14 complaints from Israel:\n1. Complaint ID: 001 - Product defect\n2. Complaint ID: 003 - Packaging issue\n...",
+    "reasoningResult": "Analysis shows a 15% increase in complaints compared to previous period. Key trends include..."
+  },
+  "expectedElements": {
+    "minResponseLength": 50,
+    "maxProcessingTime": 60000,
+    "requiredFields": ["element_id", "element_name", "saved_version", "output"]
+  }
+}

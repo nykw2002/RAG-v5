@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Document Analysis System</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="/static/version-control.css">
+    <link rel="stylesheet" href="/static/chat-styles.css">
+    <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body>
+    <!-- Alert Container for Messages -->
+    <div id="alert-container"></div>
+
+    <!-- Main Page -->
+    <div class="main-page">
+        <!-- Header -->
+        <header class="header">
+            <h1>AI Document Analysis System</h1>
+            <p>Intelligent document processing with GenAI capabilities</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="feature-grid">
+                <!-- GenAI Dynamic Element Card -->
+                <button type="button" class="feature-card" onclick="console.log('Card clicked!'); openConfigurationModal();">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" width="48" height="48" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <h3>GenAI Dynamic Element</h3>
+                    <p>Configure and analyze documents using advanced AI models with customizable extraction and reasoning capabilities.</p>
+                    <div class="feature-badge">AI Powered</div>
+                </button>
+            </div>
+
+            <!-- Saved Elements Dashboard -->
+            <div class="saved-elements-section">
+                <div class="section-header">
+                    <h4>Saved Dynamic Elements</h4>
+                    <div class="section-actions" style="display: flex; gap: 8px;">
+                        <button type="button" class="btn btn-small btn-primary" onclick="openViewerModal()">
+                            View All
+                        </button>
+                        <button type="button" class="btn btn-small btn-outline" onclick="refreshSavedElements()">
+                            Refresh
+                        </button>
+                    </div>
+                </div>
+                <div id="saved-elements-grid" class="saved-elements-grid">
+                    <div class="loading-placeholder">Loading saved elements...</div>
+                </div>
+            </div>
+
+            <!-- System Status -->
+            <div class="main-status">
+                <h4>System Status</h4>
+                <div class="status-grid">
+                    <div class="status-item">
+                        <span class="status-indicator"></span>
+                        <span>System: </span>
+                        <span id="system-status">Checking...</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-indicator"></span>
+                        <span>API Key: </span>
+                        <span id="api-status">Checking...</span>
+                    </div>
+                    <div class="status-item">
+                        <span class="status-indicator"></span>
+                        <span>Requirements: </span>
+                        <span id="requirements-status">Checking...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Configuration Modal -->
+    <div id="config-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>AI Analysis Configuration</h2>
+                <button type="button" class="modal-close" onclick="closeConfigurationModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <!-- Default Prompt -->
+                <div class="form-group">
+                    <label for="default-prompt">Analysis Prompt</label>
+                    <textarea 
+                        id="default-prompt" 
+                        class="form-control textarea" 
+                        placeholder="Enter your analysis prompt here..."
+                        rows="3">Tell me about this document</textarea>
+                </div>
+
+                <!-- Model Selection -->
+                <div class="form-group">
+                    <label for="model-select">AI Model</label>
+                    <select id="model-select" class="form-control">
+                        <option value="gpt-4o-mini">GPT-4o Mini (Fast & Economic)</option>
+                        <option value="gpt-4o">GPT-4o (Advanced)</option>
+                        <option value="gpt-4">GPT-4 (Reliable)</option>
+                    </select>
+                </div>
+
+                <!-- Method Selection -->
+                <div class="form-group">
+                    <label for="method-select">Analysis Method</label>
+                    <select id="method-select" class="form-control">
+                        <option value="extraction">Extraction - Data extraction, counting, parsing</option>
+                        <option value="reasoning">Reasoning - Analysis, comparison, insights</option>
+                    </select>
+                </div>
+
+                <!-- File Upload -->
+                <div class="form-group">
+                    <label>Document Sources</label>
+                    <div class="file-upload-area">
+                        <input 
+                            type="file" 
+                            id="file-upload" 
+                            class="file-input" 
+                            accept=".txt,.csv,.json,.md,.pptx,.docx,.pdf" 
+                            multiple>
+                        <button type="button" class="btn btn-secondary" onclick="selectFiles()">
+                            Select Files
+                        </button>
+                    </div>
+                    <div id="selected-files" class="selected-files">No files selected</div>
+                </div>
+
+                <!-- Referenced Elements -->
+                <div class="form-group">
+                    <label>Referenced Elements</label>
+                    <div class="element-buttons">
+                        <button type="button" class="element-btn active" data-element="kpi-table">
+                            KPI Table
+                        </button>
+                        <button type="button" class="element-btn" data-element="complaints">
+                            Complaints
+                        </button>
+                        <button type="button" class="element-btn" data-element="capa">
+                            CAPA Actions
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" onclick="closeConfigurationModal()">
+                    Cancel
+                </button>
+                <button type="button" class="btn btn-secondary" onclick="saveConfig()">
+                    Save Configuration
+                </button>
+                <button type="button" id="continue-btn" class="btn btn-primary" onclick="processAndContinueToEditor()">
+                    Continue to Editor
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Editor Modal -->
+    <div id="editor-modal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>AI Document Editor</h2>
+                <button type="button" class="modal-close" onclick="closeEditorModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="editor-container">
+                    <!-- Left Panel: Chat -->
+                    <div class="chat-panel">
+                        <div class="panel-header">
+                            Chat Interface
+                        </div>
+
+                        <!-- Method Selector -->
+                        <div class="method-selector">
+                            <button type="button" class="method-btn active" data-method="extraction">
+                                Extraction
+                            </button>
+                            <button type="button" class="method-btn" data-method="reasoning">
+                                Reasoning
+                            </button>
+                        </div>
+
+                        <!-- Chat Messages -->
+                        <div id="chat-messages" class="chat-messages">
+                            <div class="welcome-message">
+                                Welcome to the AI Document Analysis System!<br>
+                                You can ask questions about your documents here.
+                            </div>
+                        </div>
+
+                        <!-- Chat Input -->
+                        <div class="chat-input-area">
+                            <input 
+                                type="text" 
+                                id="chat-input" 
+                                class="chat-input" 
+                                placeholder="Ask about your document..."
+                                onkeypress="handleChatKeyPress(event)">
+                            <button type="button" id="send-btn" class="btn btn-primary" onclick="sendMessage()">
+                                Send
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Panel: Preview -->
+                    <div class="preview-panel">
+                        <div class="panel-header">
+                            <div class="header-left">
+                                <span>Analysis Results</span>
+                                <div class="version-indicator" id="version-indicator" style="display: block;">
+                                    <span id="version-text">Version 1</span>
+                                </div>
+                            </div>
+                            <div class="header-controls" id="version-controls" style="display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+                                <div class="element-naming" style="display: flex; align-items: center; gap: 8px;">
+                                    <label for="element-name-input" style="font-size: 0.9rem; font-weight: 500;">Name:</label>
+                                    <input type="text" id="element-name-input" placeholder="Analysis Result" 
+                                           style="padding: 4px 8px; border: 1px solid #cbd5e1; border-radius: 4px; font-size: 0.85rem; width: 150px;">
+                                </div>
+                                <button type="button" id="lock-version-btn" class="btn btn-small btn-outline" onclick="lockCurrentVersion()">
+                                    Lock Version
+                                </button>
+                                <button type="button" id="save-element-btn" class="btn btn-small btn-primary" onclick="saveElement()">
+                                    Save Element
+                                </button>
+                            </div>
+                        </div>
+                        <div id="preview-content" class="preview-content">
+                            <div class="placeholder-text">
+                                Analysis results will appear here after processing your configuration.
+                            </div>
+                        </div>
+                        <div class="version-status" id="version-status" style="display: block;">
+                            <div class="locked-versions" id="locked-versions"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline" onclick="backToConfiguration()">
+                    Back to Configuration
+                </button>
+                <button type="button" class="btn btn-secondary" onclick="closeEditorModal()">
+                    Close Editor
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Element Viewer Modal -->
+    <div id="viewer-modal" class="modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h2>Saved Elements</h2>
+                <button type="button" class="modal-close" onclick="closeViewerModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="elements-list" class="elements-grid">
+                    <div class="loading-message">Loading saved elements...</div>
+                </div>
+                
+                <!-- Element Detail View -->
+                <div id="element-detail" class="element-detail" style="display: none;">
+                    <div class="detail-header">
+                        <button type="button" class="btn btn-secondary" onclick="showElementsList()">← Back to List</button>
+                        <div class="detail-actions">
+                            <button type="button" class="btn btn-danger btn-small" onclick="deleteElement()">Delete</button>
+                        </div>
+                    </div>
+                    <div class="detail-content">
+                        <div class="detail-meta">
+                            <h3 id="detail-name"></h3>
+                            <div class="detail-info">
+                                <span id="detail-version"></span>
+                                <span id="detail-date"></span>
+                            </div>
+                        </div>
+                        <div class="detail-output" id="detail-output"></div>
+                        <div class="detail-context">
+                            <h4>Original Request</h4>
+                            <div id="detail-context-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        console.log('Inline JavaScript is working!');
+        
+        // Essential modal functions
+        function openConfigurationModal() {
+            console.log('Opening configuration modal...');
+            const modal = document.getElementById('config-modal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                console.log('Configuration modal opened');
+            } else {
+                console.error('Configuration modal not found');
+            }
+        }
+        
+        function closeConfigurationModal() {
+            console.log('Closing configuration modal...');
+            const modal = document.getElementById('config-modal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+        
+        function openEditorModal() {
+            console.log('Opening editor modal...');
+            const modal = document.getElementById('editor-modal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function closeEditorModal() {
+            console.log('Closing editor modal...');
+            const modal = document.getElementById('editor-modal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+        
+        function backToConfiguration() {
+            closeEditorModal();
+            setTimeout(() => {
+                openConfigurationModal();
+            }, 100);
+        }
+
+        // Viewer Modal Functions
+        function openViewerModal() {
+            console.log('Opening viewer modal...');
+            const modal = document.getElementById('viewer-modal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                loadAllElements();
+            }
+        }
+
+        function closeViewerModal() {
+            console.log('Closing viewer modal...');
+            const modal = document.getElementById('viewer-modal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        function showElementsList() {
+            document.getElementById('elements-list').style.display = 'block';
+            document.getElementById('element-detail').style.display = 'none';
+        }
+
+        function showElementDetail(elementId) {
+            document.getElementById('elements-list').style.display = 'none';
+            document.getElementById('element-detail').style.display = 'block';
+            loadElementDetail(elementId);
+        }
+
+        let currentElementId = null;
+
+        async function loadAllElements() {
+            const elementsContainer = document.getElementById('elements-list');
+            elementsContainer.innerHTML = '<div class="loading-message">Loading saved elements...</div>';
+            
+            try {
+                const response = await fetch('/api/elements');
+                const result = await response.json();
+                
+                if (result.success && result.elements) {
+                    displayElementsGrid(result.elements);
+                } else {
+                    elementsContainer.innerHTML = '<div class="no-elements">No saved elements found</div>';
+                }
+            } catch (error) {
+                console.error('Error loading elements:', error);
+                elementsContainer.innerHTML = '<div class="error-message">Error loading elements</div>';
+            }
+        }
+
+        function displayElementsGrid(elements) {
+            const elementsContainer = document.getElementById('elements-list');
+            
+            if (elements.length === 0) {
+                elementsContainer.innerHTML = '<div class="no-elements">No saved elements found</div>';
+                return;
+            }
+
+            const elementsHtml = elements.map(element => `
+                <div class="element-card" onclick="showElementDetail('${element.element_id}')">
+                    <div class="element-header">
+                        <h4>${element.element_name}</h4>
+                        <span class="element-version">v${element.saved_version}</span>
+                    </div>
+                    <div class="element-preview">${element.output.substring(0, 150)}...</div>
+                    <div class="element-meta">
+                        <span>${new Date(element.saved_at).toLocaleDateString()}</span>
+                    </div>
+                </div>
+            `).join('');
+
+            elementsContainer.innerHTML = `<div class="elements-grid">${elementsHtml}</div>`;
+        }
+
+        async function loadElementDetail(elementId) {
+            currentElementId = elementId;
+            
+            try {
+                const response = await fetch(`/api/elements/${elementId}`);
+                const result = await response.json();
+                
+                if (result.success && result.element) {
+                    const element = result.element;
+                    document.getElementById('detail-name').textContent = element.element_name;
+                    document.getElementById('detail-version').textContent = `Version ${element.saved_version}`;
+                    document.getElementById('detail-date').textContent = new Date(element.saved_at).toLocaleString();
+                    document.getElementById('detail-output').innerHTML = `<pre>${element.output}</pre>`;
+                    document.getElementById('detail-context-content').innerHTML = `<p>${element.context_used}</p>`;
+                } else {
+                    showAlert('Error loading element details', 'error');
+                }
+            } catch (error) {
+                console.error('Error loading element details:', error);
+                showAlert('Error loading element details', 'error');
+            }
+        }
+
+        async function deleteElement() {
+            if (!currentElementId) return;
+            
+            if (confirm('Are you sure you want to delete this element?')) {
+                try {
+                    const response = await fetch(`/api/elements/${currentElementId}`, {
+                        method: 'DELETE'
+                    });
+                    const result = await response.json();
+                    
+                    if (result.success) {
+                        showAlert('Element deleted successfully', 'success');
+                        showElementsList();
+                        loadAllElements();
+                    } else {
+                        showAlert('Error deleting element', 'error');
+                    }
+                } catch (error) {
+                    console.error('Error deleting element:', error);
+                    showAlert('Error deleting element', 'error');
+                }
+            }
+        }
+        
+        function selectFiles() {
+            const fileInput = document.getElementById('file-upload');
+            if (fileInput) {
+                fileInput.click();
+            }
+        }
+        
+        async function processAndContinueToEditor() {
+            console.log('🚀 Processing configuration and continuing to editor...');
+            
+            try {
+                // Disable button during processing
+                const continueBtn = document.getElementById('continue-btn');
+                if (continueBtn) {
+                    continueBtn.disabled = true;
+                    continueBtn.textContent = 'Processing...';
+                }
+                
+                // Close config modal and open editor modal immediately
+                closeConfigurationModal();
+                
+                setTimeout(() => {
+                    openEditorModal();
+                    
+                    // Show loading animation immediately
+                    setTimeout(() => {
+                        showLoadingInPreview('🤖 AI is analyzing your document...');
+                    }, 50);
+                }, 100);
+                
+                // Collect configuration data
+                const configData = {
+                    default_prompt: document.getElementById('default-prompt')?.value || 'Tell me about this document',
+                    model: document.getElementById('model-select')?.value || 'gpt-4o-mini',
+                    method: document.getElementById('method-select')?.value || 'extraction',
+                    document_sources: [], // TODO: Add file handling later
+                    referenced_elements: ['kpi-table'] // Default for now
+                };
+                
+                console.log('Configuration collected:', configData);
+                
+                // Send to backend (this is where the real AI processing happens)
+                const response = await fetch('/api/process-config', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(configData)
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const result = await response.json();
+                
+                if (!result.success) {
+                    throw new Error(result.detail || 'Processing failed');
+                }
+                
+                console.log('Configuration processed successfully');
+                
+                // Display results after AI processing is complete
+                setTimeout(() => {
+                    displayAIResult(result);
+                }, 300);
+                
+                console.log('Successfully transitioned to editor with AI results');
+                
+            } catch (error) {
+                console.error('Error processing configuration:', error);
+                alert('Error: ' + error.message);
+            } finally {
+                // Re-enable button
+                const continueBtn = document.getElementById('continue-btn');
+                if (continueBtn) {
+                    continueBtn.disabled = false;
+                    continueBtn.textContent = 'Continue to Editor';
+                }
+            }
+        }
+        
+        function showLoadingInPreview(message = 'Processing your request...') {
+            try {
+                const previewContent = document.getElementById('preview-content');
+                if (previewContent) {
+                    previewContent.innerHTML = `
+                        <div class="loading">
+                            <div class="spinner"></div>
+                            <div style="margin-top: 15px; color: #667eea; font-weight: 500;">
+                                ${message}
+                            </div>
+                            <div style="margin-top: 10px; color: #94a3b8; font-size: 0.9rem;">
+                                This may take a few moments...
+                            </div>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error showing loading in preview:', error);
+            }
+        }
+        
+        function displayAIResult(result) {
+            try {
+                console.log('Displaying AI result in preview panel');
+                
+                const previewContent = document.getElementById('preview-content');
+                if (!previewContent) {
+                    console.error('Preview content element not found');
+                    alert('Preview panel not available in editor modal.');
+                    return;
+                }
+                
+                const timestamp = new Date().toLocaleTimeString();
+                const methodLabel = result.method_used || 'Unknown';
+                const modelLabel = result.model_used || 'Unknown';
+                
+                const resultHtml = `
+                    <div class="preview-header">
+                        <strong>AI Analysis Complete</strong><br>
+                        Method: <strong>${methodLabel}</strong> | 
+                        Model: <strong>${modelLabel}</strong> | 
+                        ${timestamp}
+                    </div>
+                    
+                    <div class="config-summary">
+                        <h4>Configuration Summary</h4>
+                        <div style="font-size: 13px; line-height: 1.5;">
+                            <strong>Prompt:</strong> ${result.user_prompt ? result.user_prompt.substring(0, 150) + (result.user_prompt.length > 150 ? '...' : '') : 'N/A'}<br>
+                            <strong>Files:</strong> ${result.files_processed ? result.files_processed.join(', ') : 'None'}<br>
+                            ${result.referenced_elements && result.referenced_elements.length > 0 ? 
+                                `<strong>Elements:</strong> ${result.referenced_elements.join(', ')}` : ''}
+                        </div>
+                    </div>
+                    
+                    <div class="preview-result">
+                        ${result.result || 'No result available'}
+                    </div>
+                `;
+                
+                previewContent.innerHTML = resultHtml;
+                console.log('AI result displayed successfully');
+                
+                // Initialize version control system with better debugging
+                console.log('Initializing version control...');
+                console.log('Available functions:', Object.keys(window).filter(k => k.includes('Version') || k.includes('version')));
+                console.log('ElementVersioning object:', window.ElementVersioning);
+                
+                // Small delay to ensure scripts are loaded
+                setTimeout(() => {
+                    if (typeof window.initializeVersionControl === 'function') {
+                        console.log('initializeVersionControl function found, calling with:', result.user_prompt);
+                        window.initializeVersionControl(result.result, result.user_prompt);
+                        console.log('Version control initialized for new element');
+                    } else {
+                        console.error('initializeVersionControl function not found');
+                        console.log('Available window functions:', Object.keys(window).filter(k => k.toLowerCase().includes('init')));
+                        
+                        // Fallback: manually show version controls
+                        const versionIndicator = document.getElementById('version-indicator');
+                        const versionControls = document.getElementById('version-controls');
+                        const versionStatus = document.getElementById('version-status');
+                        
+                        if (versionIndicator) versionIndicator.style.display = 'block';
+                        if (versionControls) versionControls.style.display = 'flex';
+                        if (versionStatus) versionStatus.style.display = 'block';
+                        console.log('Version controls shown as fallback');
+                    }
+                }, 100);
+                
+            } catch (error) {
+                console.error('Error displaying AI result:', error);
+                const previewContent = document.getElementById('preview-content');
+                if (previewContent) {
+                    previewContent.innerHTML = `
+                        <div class="error-message">
+                            <strong>Error:</strong> ${error.message}
+                        </div>
+                    `;
+                }
+            }
+        }
+        
+        function saveConfig() {
+            alert('Save configuration - full script needed!');
+        }
+        
+        async function loadConfig() {
+            try {
+                const response = await fetch('/api/config');
+                if (response.ok) {
+                    const config = await response.json();
+                    // Update form elements if they exist
+                    const defaultPrompt = document.getElementById('default-prompt');
+                    const modelSelect = document.getElementById('model-select');
+                    const methodSelect = document.getElementById('method-select');
+                    
+                    if (defaultPrompt) defaultPrompt.value = config.default_prompt || 'Tell me about this document';
+                    if (modelSelect) modelSelect.value = config.model || 'gpt-4o-mini';
+                    if (methodSelect) methodSelect.value = config.method || 'extraction';
+                    
+                    console.log('Configuration loaded');
+                }
+            } catch (error) {
+                console.error('Error loading configuration:', error);
+            }
+        }
+        
+        function loadConfiguration() {
+            // Alias for loadConfig to fix the initialization error
+            loadConfig();
+        }
+        
+        function checkHealth() {
+            alert('Check health - full script needed!');
+        }
+        
+        function sendMessage() {
+            alert('Send message - full script needed!');
+        }
+        
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        }
+        
+        // Modal click outside to close
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                closeConfigurationModal();
+                closeEditorModal();
+            }
+        });
+        
+        // Dashboard functions
+        async function loadSavedElements() {
+            console.log('Loading saved elements for dashboard...');
+            
+            try {
+                const response = await fetch('/api/elements');
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                displaySavedElements(data.elements || [], data.stats || {});
+                
+            } catch (error) {
+                console.error('Error loading saved elements:', error);
+                const grid = document.getElementById('saved-elements-grid');
+                if (grid) {
+                    grid.innerHTML = '<div class="empty-elements">Error loading saved elements</div>';
+                }
+            }
+        }
+        
+        function displaySavedElements(elements, stats) {
+            const grid = document.getElementById('saved-elements-grid');
+            if (!grid) return;
+            
+            if (elements.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-elements">
+                        <div class="empty-elements-icon">📄</div>
+                        <div>No saved elements yet</div>
+                        <div style="margin-top: 10px; font-size: 0.9rem;">Create your first dynamic element using the AI configuration above!</div>
+                    </div>
+                `;
+                return;
+            }
+            
+            const elementsHTML = elements.map(element => {
+                const date = new Date(element.saved_at).toLocaleDateString();
+                const time = new Date(element.saved_at).toLocaleTimeString();
+                
+                return `
+                    <div class="element-card" onclick="viewElement('${element.element_id}')">
+                        <div class="element-actions">
+                            <button class="action-btn" onclick="event.stopPropagation(); viewElement('${element.element_id}')" title="View">
+                                View
+                            </button>
+                            <button class="action-btn delete" onclick="event.stopPropagation(); deleteElement('${element.element_id}')" title="Delete">
+                                Delete
+                            </button>
+                        </div>
+                        
+                        <div class="element-header">
+                            <h5 class="element-title">${element.element_name}</h5>
+                            <div class="element-version">V${element.saved_version}</div>
+                        </div>
+                        
+                        <div class="element-preview">
+                            ${element.output_preview}
+                        </div>
+                        
+                        <div class="element-meta">
+                            <div class="element-date">${date} ${time}</div>
+                            <div class="element-stats">
+                                <div class="stat-item">
+                                    <span>💬 ${element.chat_count}</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span>📑 ${element.version_count}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            grid.innerHTML = elementsHTML;
+            console.log(`Displayed ${elements.length} saved elements`);
+        }
+        
+        async function refreshSavedElements() {
+            await loadSavedElements();
+        }
+        
+        function viewElement(elementId) {
+            console.log(`Viewing element: ${elementId}`);
+            // Open the viewer modal and show the specific element
+            openViewerModal();
+            // Once modal is open, navigate to the element details
+            setTimeout(() => {
+                showElementDetail(elementId);
+            }, 100);
+        }
+        
+        async function deleteElement(elementId) {
+            if (!confirm('Are you sure you want to delete this element?')) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/api/elements/${elementId}`, {
+                    method: 'DELETE'
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                await loadSavedElements(); // Refresh the list
+                alert('Element deleted successfully');
+                
+            } catch (error) {
+                console.error('Error deleting element:', error);
+                alert('Error deleting element: ' + error.message);
+            }
+        }
+        
+        // Load saved elements on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(loadSavedElements, 1000); // Load after initial setup
+        });
+        
+        // Expose functions to global scope
+        window.refreshSavedElements = refreshSavedElements;
+        window.viewElement = viewElement;
+        window.deleteElement = deleteElement;
+        
+        console.log('Essential modal functions loaded inline');
+    </script>
+    <script src="/static/version-control.js" onerror="console.error('Failed to load version-control.js')"></script>
+    <script src="/static/chat-iteration.js" onerror="console.error('Failed to load chat-iteration.js')"></script>
+    <script src="/static/script.js" onerror="console.error('Failed to load script.js')"></script>
+</body>
+</html>

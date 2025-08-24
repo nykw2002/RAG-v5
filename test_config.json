@@ -1,0 +1,13 @@
+{
+  "user_prompt": "How many complaints are for Israel? Please provide a detailed list with all of them.",
+  "method": "extraction",
+  "model": "gpt-4o-mini",
+  "data": [],
+  "files": [
+    {
+      "file_name": "test",
+      "file_type": "TXT",
+      "file_path": "test.txt"
+    }
+  ]
+}

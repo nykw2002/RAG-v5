@@ -1,0 +1,321 @@
+<testsuites id="" name="" tests="10" failures="6" skipped="0" errors="0" time="203.578291">
+<testsuite name="09-israel-prompt-test.spec.js" timestamp="2025-08-24T21:34:38.230Z" hostname="chromium" tests="2" failures="1" skipped="0" time="50.78" errors="0">
+<testcase name="Israel Complaints Extraction Test › should process Israel complaints request successfully" classname="09-israel-prompt-test.spec.js" time="15.205">
+<failure message="09-israel-prompt-test.spec.js:7:3 should process Israel complaints request successfully" type="FAILURE">
+<![CDATA[  [chromium] › 09-israel-prompt-test.spec.js:7:3 › Israel Complaints Extraction Test › should process Israel complaints request successfully 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator:  locator('#version-indicator')
+    Expected: visible
+    Received: hidden
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toBeVisible" with timeout 10000ms
+      - waiting for locator('#version-indicator')
+        14 × locator resolved to <div id="version-indicator" class="version-indicator">…</div>
+           - unexpected value "hidden"
+
+
+      44 |     
+      45 |     // Version controls should be visible
+    > 46 |     await expect(page.locator('#version-indicator')).toBeVisible();
+         |                                                      ^
+      47 |     await expect(page.locator('#version-text')).toContainText('Version 1');
+      48 |     
+      49 |     // Test version locking
+        at C:\Users\nicul\OneDrive\Desktop\LangGraph\tests\e2e\09-israel-prompt-test.spec.js:46:54
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\09-israel-prompt-test-Isra-43faf-laints-request-successfully-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\09-israel-prompt-test-Isra-43faf-laints-request-successfully-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\09-israel-prompt-test-Isra-43faf-laints-request-successfully-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[Waiting for AI to process Israel complaints...
+=== AI RESULT ===
+
+                Number of complaints for Israel: 14
+List of complaints:
+- 000201357115 Israel PT3Y 10000000097173 Pump does not work
+- 000201362808 Israel PT3Y 10000000097173 Device will not spray
+- 000201368601 Israel PT3Y 10000000097173 Device will not spray
+- 000201390276 Israel 9V2R 10000000097173 Spray does not work
+- 000201396289 Israel PT3Y 10000000097173 Pump does not work
+- 000201399710 Israel UC9T 10000000097173 Pump does not work
+- 000201412764 Israel PT3Y 10000000097173 The substance does not come out.
+- 000201431674 Israel 6J7F 10000000097173 Will not spray
+- 000201446598 Israel UC9T 10000000097173 The substance does not come out
+- QE-004535 Israel 7R8M 10000000097173 Avamys nasal spray 120 dose- BN
+- QE-006727 Israel EN8T 10000000097173 AVAMYS AQ NASAL SPRAY 120D -
+- QE-008974 Israel 7R8M 10000000097173 Avamys nasal spray 120 dose- BN
+- QE-009576 Israel 9D6N 10000000097173 Avamys nasal spray 120 dose- BN
+- QE-009755 Israel 7R8M 10000000097173 Avamys nasal spray 120 dose- BN
+
+            
+=== END RESULT ===
+
+[[ATTACHMENT|09-israel-prompt-test-Isra-43faf-laints-request-successfully-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|09-israel-prompt-test-Isra-43faf-laints-request-successfully-chromium\video.webm]]
+
+[[ATTACHMENT|09-israel-prompt-test-Isra-43faf-laints-request-successfully-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Israel Complaints Extraction Test › should handle chat iteration with realistic context" classname="09-israel-prompt-test.spec.js" time="35.575">
+<system-out>
+<![CDATA[Initial result length: [33m1045[39m
+Final result length: [33m81[39m
+Version after chat: Version 1
+✅ Result was updated (same version)
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="09-israel-prompt-test.spec.js" timestamp="2025-08-24T21:34:38.230Z" hostname="firefox" tests="2" failures="1" skipped="0" time="51.751" errors="0">
+<testcase name="Israel Complaints Extraction Test › should process Israel complaints request successfully" classname="09-israel-prompt-test.spec.js" time="15.792">
+<failure message="09-israel-prompt-test.spec.js:7:3 should process Israel complaints request successfully" type="FAILURE">
+<![CDATA[  [firefox] › 09-israel-prompt-test.spec.js:7:3 › Israel Complaints Extraction Test › should process Israel complaints request successfully 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator:  locator('#version-indicator')
+    Expected: visible
+    Received: hidden
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toBeVisible" with timeout 10000ms
+      - waiting for locator('#version-indicator')
+        14 × locator resolved to <div id="version-indicator" class="version-indicator">…</div>
+           - unexpected value "hidden"
+
+
+      44 |     
+      45 |     // Version controls should be visible
+    > 46 |     await expect(page.locator('#version-indicator')).toBeVisible();
+         |                                                      ^
+      47 |     await expect(page.locator('#version-text')).toContainText('Version 1');
+      48 |     
+      49 |     // Test version locking
+        at C:\Users\nicul\OneDrive\Desktop\LangGraph\tests\e2e\09-israel-prompt-test.spec.js:46:54
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\09-israel-prompt-test-Isra-43faf-laints-request-successfully-firefox\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\09-israel-prompt-test-Isra-43faf-laints-request-successfully-firefox\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\09-israel-prompt-test-Isra-43faf-laints-request-successfully-firefox\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[Waiting for AI to process Israel complaints...
+=== AI RESULT ===
+
+                Total number of complaints for Israel: 14
+Detailed list of complaints:
+- 000201357115 Israel PT3Y 10000000097173 Pump does not work
+- 000201362808 Israel PT3Y 10000000097173 Device will not spray
+- 000201368601 Israel PT3Y 10000000097173 Device will not spray
+- 000201390276 Israel 9V2R 10000000097173 Spray does not work
+- 000201396289 Israel PT3Y 10000000097173 Pump does not work
+- 000201399710 Israel UC9T 10000000097173 Pump does not work
+- 000201412764 Israel PT3Y 10000000097173 The substance does not come out.
+- 000201431674 Israel 6J7F 10000000097173 Will not spray
+- 000201446598 Israel UC9T 10000000097173 The substance does not come out
+- QE-004535 Israel 7R8M 10000000097173 Avamys nasal spray 120 dose- BN
+- QE-006727 Israel EN8T 10000000097173 AVAMYS AQ NASAL SPRAY 120D -
+- QE-008974 Israel 7R8M 10000000097173 Avamys nasal spray 120 dose- BN
+- QE-009576 Israel 9D6N 10000000097173 Avamys nasal spray 120 dose- BN
+- QE-009755 Israel 7R8M 10000000097173 Avamys nasal spray 120 dose- BN
+
+            
+=== END RESULT ===
+
+[[ATTACHMENT|09-israel-prompt-test-Isra-43faf-laints-request-successfully-firefox\test-failed-1.png]]
+
+[[ATTACHMENT|09-israel-prompt-test-Isra-43faf-laints-request-successfully-firefox\video.webm]]
+
+[[ATTACHMENT|09-israel-prompt-test-Isra-43faf-laints-request-successfully-firefox\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Israel Complaints Extraction Test › should handle chat iteration with realistic context" classname="09-israel-prompt-test.spec.js" time="35.959">
+<system-out>
+<![CDATA[Initial result length: [33m1022[39m
+Final result length: [33m81[39m
+Version after chat: Version 1
+✅ Result was updated (same version)
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="09-israel-prompt-test.spec.js" timestamp="2025-08-24T21:34:38.230Z" hostname="webkit" tests="2" failures="1" skipped="0" time="52.769" errors="0">
+<testcase name="Israel Complaints Extraction Test › should process Israel complaints request successfully" classname="09-israel-prompt-test.spec.js" time="16.64">
+<failure message="09-israel-prompt-test.spec.js:7:3 should process Israel complaints request successfully" type="FAILURE">
+<![CDATA[  [webkit] › 09-israel-prompt-test.spec.js:7:3 › Israel Complaints Extraction Test › should process Israel complaints request successfully 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator:  locator('#version-indicator')
+    Expected: visible
+    Received: hidden
+    Timeout:  10000ms
+
+    Call log:
+      - Expect "toBeVisible" with timeout 10000ms
+      - waiting for locator('#version-indicator')
+        14 × locator resolved to <div id="version-indicator" class="version-indicator">…</div>
+           - unexpected value "hidden"
+
+
+      44 |     
+      45 |     // Version controls should be visible
+    > 46 |     await expect(page.locator('#version-indicator')).toBeVisible();
+         |                                                      ^
+      47 |     await expect(page.locator('#version-text')).toContainText('Version 1');
+      48 |     
+      49 |     // Test version locking
+        at C:\Users\nicul\OneDrive\Desktop\LangGraph\tests\e2e\09-israel-prompt-test.spec.js:46:54
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\09-israel-prompt-test-Isra-43faf-laints-request-successfully-webkit\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\09-israel-prompt-test-Isra-43faf-laints-request-successfully-webkit\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\09-israel-prompt-test-Isra-43faf-laints-request-successfully-webkit\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[Waiting for AI to process Israel complaints...
+=== AI RESULT ===
+
+                Total number of complaints for Israel: 14
+Detailed list of complaints:
+- 000201357115 Israel PT3Y 10000000097173 Pump does not work
+- 000201362808 Israel PT3Y 10000000097173 Device will not spray
+- 000201368601 Israel PT3Y 10000000097173 Device will not spray
+- 000201390276 Israel 9V2R 10000000097173 Spray does not work
+- 000201396289 Israel PT3Y 10000000097173 Pump does not work
+- 000201399710 Israel UC9T 10000000097173 Pump does not work
+- 000201412764 Israel PT3Y 10000000097173 The substance does not come out.
+- 000201431674 Israel 6J7F 10000000097173 Will not spray
+- 000201446598 Israel UC9T 10000000097173 The substance does not come out
+- QE-004535 Israel 7R8M 10000000097173 Avamys nasal spray 120 dose- BN
+- QE-006727 Israel EN8T 10000000097173 AVAMYS AQ NASAL SPRAY 120D -
+- QE-008974 Israel 7R8M 10000000097173 Avamys nasal spray 120 dose- BN
+- QE-009576 Israel 9D6N 10000000097173 Avamys nasal spray 120 dose- BN
+- QE-009755 Israel 7R8M 10000000097173 Avamys nasal spray 120 dose- BN
+
+            
+=== END RESULT ===
+
+[[ATTACHMENT|09-israel-prompt-test-Isra-43faf-laints-request-successfully-webkit\test-failed-1.png]]
+
+[[ATTACHMENT|09-israel-prompt-test-Isra-43faf-laints-request-successfully-webkit\video.webm]]
+
+[[ATTACHMENT|09-israel-prompt-test-Isra-43faf-laints-request-successfully-webkit\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Israel Complaints Extraction Test › should handle chat iteration with realistic context" classname="09-israel-prompt-test.spec.js" time="36.129">
+<system-out>
+<![CDATA[Initial result length: [33m1026[39m
+Final result length: [33m76[39m
+Version after chat: Version 1
+✅ Result was updated (same version)
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="09-israel-prompt-test.spec.js" timestamp="2025-08-24T21:34:38.230Z" hostname="Mobile Chrome" tests="2" failures="1" skipped="0" time="40.879" errors="0">
+<testcase name="Israel Complaints Extraction Test › should process Israel complaints request successfully" classname="09-israel-prompt-test.spec.js" time="5.226">
+<failure message="09-israel-prompt-test.spec.js:7:3 should process Israel complaints request successfully" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › 09-israel-prompt-test.spec.js:7:3 › Israel Complaints Extraction Test › should process Israel complaints request successfully 
+
+    Error: expect(received).toContain(expected) // indexOf
+
+    Expected substring: "israel"
+    Received string:    "
+                    analysis completed after maximum iterations
+                "
+
+      41 |     
+      42 |     // Should mention Israel (case insensitive)
+    > 43 |     expect(resultText.toLowerCase()).toContain('israel');
+         |                                      ^
+      44 |     
+      45 |     // Version controls should be visible
+      46 |     await expect(page.locator('#version-indicator')).toBeVisible();
+        at C:\Users\nicul\OneDrive\Desktop\LangGraph\tests\e2e\09-israel-prompt-test.spec.js:43:38
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\..\test-results\09-israel-prompt-test-Isra-43faf-laints-request-successfully-Mobile-Chrome\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\..\test-results\09-israel-prompt-test-Isra-43faf-laints-request-successfully-Mobile-Chrome\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\..\test-results\09-israel-prompt-test-Isra-43faf-laints-request-successfully-Mobile-Chrome\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[Waiting for AI to process Israel complaints...
+=== AI RESULT ===
+
+                Analysis completed after maximum iterations
+            
+=== END RESULT ===
+
+[[ATTACHMENT|09-israel-prompt-test-Isra-43faf-laints-request-successfully-Mobile-Chrome\test-failed-1.png]]
+
+[[ATTACHMENT|09-israel-prompt-test-Isra-43faf-laints-request-successfully-Mobile-Chrome\video.webm]]
+
+[[ATTACHMENT|09-israel-prompt-test-Isra-43faf-laints-request-successfully-Mobile-Chrome\error-context.md]]
+]]>
+</system-out>
+</testcase>
+<testcase name="Israel Complaints Extraction Test › should handle chat iteration with realistic context" classname="09-israel-prompt-test.spec.js" time="35.653">
+<system-out>
+<![CDATA[Initial result length: [33m1043[39m
+Final result length: [33m88[39m
+Version after chat: Version 1
+✅ Result was updated (same version)
+]]>
+</system-out>
+</testcase>
+</testsuite>
+<testsuite name="09-israel-prompt-test.spec.js" timestamp="2025-08-24T21:34:38.230Z" hostname="Mobile Safari" tests="2" failures="2" skipped="0" time="0" errors="0">
+<testcase name="Israel Complaints Extraction Test › should process Israel complaints request successfully" classname="09-israel-prompt-test.spec.js" time="0">
+<failure message="09-israel-prompt-test.spec.js:7:3 should process Israel complaints request successfully" type="FAILURE">
+<![CDATA[  [Mobile Safari] › 09-israel-prompt-test.spec.js:7:3 › Israel Complaints Extraction Test › should process Israel complaints request successfully 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+<testcase name="Israel Complaints Extraction Test › should handle chat iteration with realistic context" classname="09-israel-prompt-test.spec.js" time="0">
+<failure message="09-israel-prompt-test.spec.js:63:3 should handle chat iteration with realistic context" type="FAILURE">
+<![CDATA[  [Mobile Safari] › 09-israel-prompt-test.spec.js:63:3 › Israel Complaints Extraction Test › should handle chat iteration with realistic context 
+
+    Error: worker process exited unexpectedly (code=3221225794, signal=null)
+]]>
+</failure>
+</testcase>
+</testsuite>
+</testsuites>

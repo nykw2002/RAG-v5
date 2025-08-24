@@ -1,0 +1,81 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - heading "AI Document Analysis System" [level=1] [ref=e4]
+      - paragraph [ref=e5]: Intelligent document processing with GenAI capabilities
+    - generic [ref=e6]:
+      - button "GenAI Dynamic Element Configure and analyze documents using advanced AI models with customizable extraction and reasoning capabilities. AI Powered" [ref=e8] [cursor=pointer]:
+        - img [ref=e10] [cursor=pointer]
+        - heading "GenAI Dynamic Element" [level=3] [ref=e12] [cursor=pointer]
+        - paragraph [ref=e13] [cursor=pointer]: Configure and analyze documents using advanced AI models with customizable extraction and reasoning capabilities.
+        - generic [ref=e14] [cursor=pointer]: AI Powered
+      - generic [ref=e15]:
+        - generic [ref=e16]:
+          - heading "Saved Dynamic Elements" [level=4] [ref=e17]
+          - button "Refresh" [ref=e18] [cursor=pointer]
+        - generic [ref=e20] [cursor=pointer]:
+          - generic [ref=e21] [cursor=pointer]:
+            - button "👁️" [ref=e22] [cursor=pointer]
+            - button "🗑️" [ref=e23] [cursor=pointer]
+          - generic [ref=e24] [cursor=pointer]:
+            - heading "Test Element" [level=5] [ref=e25] [cursor=pointer]
+            - generic [ref=e26] [cursor=pointer]: V1
+          - generic [ref=e27] [cursor=pointer]: Test output
+          - generic [ref=e28] [cursor=pointer]:
+            - generic [ref=e29] [cursor=pointer]: 8/25/2025 12:25:56 AM
+            - generic [ref=e30] [cursor=pointer]:
+              - generic [ref=e32] [cursor=pointer]: 💬 1
+              - generic [ref=e34] [cursor=pointer]: 📑 1
+      - generic [ref=e35]:
+        - heading "System Status" [level=4] [ref=e36]
+        - generic [ref=e37]:
+          - generic [ref=e38]:
+            - generic [ref=e40]: "System:"
+            - generic [ref=e41]: healthy
+          - generic [ref=e42]:
+            - generic [ref=e44]: "API Key:"
+            - generic [ref=e45]: Configured
+          - generic [ref=e46]:
+            - generic [ref=e48]: "Requirements:"
+            - generic [ref=e49]: Met
+  - generic [ref=e51]:
+    - generic [ref=e52]:
+      - heading "AI Document Editor" [level=2] [ref=e53]
+      - button "×" [ref=e54] [cursor=pointer]
+    - generic [ref=e56]:
+      - generic [ref=e57]:
+        - generic [ref=e58]: Chat Interface
+        - generic [ref=e59]:
+          - button "Extraction" [ref=e60] [cursor=pointer]
+          - button "Reasoning" [ref=e61] [cursor=pointer]
+        - generic [ref=e63]:
+          - text: Welcome to the AI Document Analysis System!
+          - text: You can ask questions about your documents here.
+        - generic [ref=e64]:
+          - textbox "Ask about your document..." [ref=e65]
+          - button "Send" [ref=e66] [cursor=pointer]
+      - generic [ref=e67]:
+        - generic [ref=e70]: Analysis Results
+        - generic [ref=e71]:
+          - generic [ref=e72]:
+            - strong [ref=e73]: AI Analysis Complete
+            - text: "Method:"
+            - strong [ref=e74]: extraction
+            - text: "| Model:"
+            - strong [ref=e75]: gpt-4o-mini
+            - text: "| 12:34:43 AM"
+          - generic [ref=e76]:
+            - heading "Configuration Summary" [level=4] [ref=e77]
+            - generic [ref=e78]:
+              - strong [ref=e79]: "Prompt:"
+              - text: How many complaints are for Israel? Please provide a detailed list with all of them.
+              - strong [ref=e80]: "Files:"
+              - text: test.txt
+          - generic [ref=e81]: "Number of complaints for Israel: 14 List of complaints: - 000201357115 Israel PT3Y 10000000097173 Pump does not work - 000201362808 Israel PT3Y 10000000097173 Device will not spray - 000201368601 Israel PT3Y 10000000097173 Device will not spray - 000201390276 Israel 9V2R 10000000097173 Spray does not work - 000201396289 Israel PT3Y 10000000097173 Pump does not work - 000201399710 Israel UC9T 10000000097173 Pump does not work - 000201412764 Israel PT3Y 10000000097173 The substance does not come out. - 000201431674 Israel 6J7F 10000000097173 Will not spray - 000201446598 Israel UC9T 10000000097173 The substance does not come out - QE-004535 Israel 7R8M 10000000097173 Avamys nasal spray 120 dose- BN - QE-006727 Israel EN8T 10000000097173 AVAMYS AQ NASAL SPRAY 120D - - QE-008974 Israel 7R8M 10000000097173 Avamys nasal spray 120 dose- BN - QE-009576 Israel 9D6N 10000000097173 Avamys nasal spray 120 dose- BN - QE-009755 Israel 7R8M 10000000097173 Avamys nasal spray 120 dose- BN"
+    - generic [ref=e82]:
+      - button "Back to Configuration" [ref=e83] [cursor=pointer]
+      - button "Close Editor" [ref=e84] [cursor=pointer]
+```

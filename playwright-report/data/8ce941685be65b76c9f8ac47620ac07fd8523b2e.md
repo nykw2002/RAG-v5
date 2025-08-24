@@ -1,0 +1,84 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - text: Configuration processed successfully! Check the analysis results.
+    - button "×" [ref=e4] [cursor=pointer]
+  - generic [ref=e5]:
+    - banner [ref=e6]:
+      - heading "AI Document Analysis System" [level=1] [ref=e7]
+      - paragraph [ref=e8]: Intelligent document processing with GenAI capabilities
+    - generic [ref=e9]:
+      - button "GenAI Dynamic Element Configure and analyze documents using advanced AI models with customizable extraction and reasoning capabilities. AI Powered" [ref=e11] [cursor=pointer]:
+        - img [ref=e13] [cursor=pointer]
+        - heading "GenAI Dynamic Element" [level=3] [ref=e15] [cursor=pointer]
+        - paragraph [ref=e16] [cursor=pointer]: Configure and analyze documents using advanced AI models with customizable extraction and reasoning capabilities.
+        - generic [ref=e17] [cursor=pointer]: AI Powered
+      - generic [ref=e18]:
+        - generic [ref=e19]:
+          - heading "Saved Dynamic Elements" [level=4] [ref=e20]
+          - button "Refresh" [ref=e21] [cursor=pointer]
+        - generic [ref=e23] [cursor=pointer]:
+          - generic [ref=e24] [cursor=pointer]:
+            - button "👁️" [ref=e25] [cursor=pointer]
+            - button "🗑️" [ref=e26] [cursor=pointer]
+          - generic [ref=e27] [cursor=pointer]:
+            - heading "Test Element" [level=5] [ref=e28] [cursor=pointer]
+            - generic [ref=e29] [cursor=pointer]: V1
+          - generic [ref=e30] [cursor=pointer]: Test output
+          - generic [ref=e31] [cursor=pointer]:
+            - generic [ref=e32] [cursor=pointer]: 8/25/2025 12:25:56 AM
+            - generic [ref=e33] [cursor=pointer]:
+              - generic [ref=e35] [cursor=pointer]: 💬 1
+              - generic [ref=e37] [cursor=pointer]: 📑 1
+      - generic [ref=e38]:
+        - heading "System Status" [level=4] [ref=e39]
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - generic [ref=e43]: "System:"
+            - generic [ref=e44]: healthy
+          - generic [ref=e45]:
+            - generic [ref=e47]: "API Key:"
+            - generic [ref=e48]: Configured
+          - generic [ref=e49]:
+            - generic [ref=e51]: "Requirements:"
+            - generic [ref=e52]: Met
+  - generic [ref=e54]:
+    - generic [ref=e55]:
+      - heading "AI Document Editor" [level=2] [ref=e56]
+      - button "×" [ref=e57] [cursor=pointer]
+    - generic [ref=e59]:
+      - generic [ref=e60]:
+        - generic [ref=e61]: Chat Interface
+        - generic [ref=e62]:
+          - button "Extraction" [ref=e63] [cursor=pointer]
+          - button "Reasoning" [ref=e64] [cursor=pointer]
+        - generic [ref=e66]:
+          - text: Welcome to the AI Document Analysis System!
+          - text: You can ask questions about your documents here.
+        - generic [ref=e67]:
+          - textbox "Ask about your document..." [ref=e68]
+          - button "Send" [ref=e69] [cursor=pointer]
+      - generic [ref=e70]:
+        - generic [ref=e73]: Analysis Results
+        - generic [ref=e74]:
+          - generic [ref=e75]:
+            - strong [ref=e76]: AI Analysis Complete
+            - text: "Method:"
+            - strong [ref=e77]: extraction
+            - text: "| Model:"
+            - strong [ref=e78]: gpt-4o-mini
+            - text: "| 12:37:23 AM"
+          - generic [ref=e79]:
+            - heading "Configuration Summary" [level=4] [ref=e80]
+            - generic [ref=e81]:
+              - strong [ref=e82]: "Prompt:"
+              - text: How many complaints are for Israel? Please provide a detailed list with all of them.
+              - strong [ref=e83]: "Files:"
+              - text: test.txt
+          - generic [ref=e84]: Analysis completed after maximum iterations
+    - generic [ref=e85]:
+      - button "Back to Configuration" [ref=e86] [cursor=pointer]
+      - button "Close Editor" [ref=e87] [cursor=pointer]
+```
